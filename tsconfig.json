@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+  "baseUrl": ".",
+        "paths": {
+          "@config" :["playwright.config"],
+
+        }
+      },
+      "strict": true, 
+      // "target": "ES2020",           // Set the JavaScript version for output files
+      // "module": "CommonJS",  
+      // "outDir": "./dist", 
+    }

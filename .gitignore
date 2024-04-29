@@ -1,0 +1,6 @@
+# Playwright directories
+test-results/
+playwright-report/
+
+# Dependency directories
+node_modules/
