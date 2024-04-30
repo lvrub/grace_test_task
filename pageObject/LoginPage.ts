@@ -10,27 +10,27 @@ class LoginPage extends BasePage{
     }
 
     private getInputEmail(): Locator {
-      return this.page.locator("//input[@id='login_email']");
+      return this.page.getByPlaceholder("Email");
     }
 
     private getInputPasssword(): Locator {
-        return this.page.locator("//input[@id='login_password']");
+        return this.page.getByPlaceholder("Password");
       }
 
       private getButtonLogIn(): Locator {
-        return this.page.locator("button[type='submit']");
+        return this.page.getByRole("button");
       }
 
       async openLoginPage(){
         await this.page.goto('/');
       }
 
-    async fillEmail() {
-        await this.getInputEmail().fill(process.env.EMAIL)
+    async fillEmail(email: string) {
+        await this.getInputEmail().fill(email)
     }
 
-    async fillPassword() {
-        await this.getInputPasssword().fill(process.env.PASSWORD)
+    async fillPassword(password: string) {
+        await this.getInputPasssword().fill(password)
     }
 
     async clickButoonLogIn() {

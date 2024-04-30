@@ -33,7 +33,7 @@ class SalesPage extends BasePage {
         return this.page.locator("//div[contains(@id, 'premium')]//canvas");
     }
 
-    async selectTab(name: String){
+    async selectTab(name: string){
         await this.getTab(name).click()
     }
 
@@ -45,7 +45,7 @@ class SalesPage extends BasePage {
         await this.getSelectYear().click()
     }
 
-    async selectItemFromList(name: String){
+    async selectItemFromList(name: string){
         await this.getSelectList().locator(`//*[@title='${name}']`).click()
     }
 

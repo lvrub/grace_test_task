@@ -7,9 +7,10 @@ test.describe('test suit for testinng', () => {
 test.beforeEach( async ({loginPage})=> {
 
   await loginPage.openLoginPage();
-  await loginPage.fillEmail();
-  await loginPage.fillPassword();
+  await loginPage.fillEmail(process.env.EMAIL);
+  await loginPage.fillPassword(process.env.PASSWORD);
   await loginPage.clickButoonLogIn()
+
 
 })
 

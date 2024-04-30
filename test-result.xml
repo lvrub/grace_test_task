@@ -1,8 +1,8 @@
-<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="30.284972000000003">
-<testsuite name="tests.spec.ts" timestamp="2024-04-30T00:40:18.682Z" hostname="chromium" tests="2" failures="0" skipped="0" time="26.956" errors="0">
-<testcase name="test suit for testinng › verify total premium data" classname="tests.spec.ts" time="13.952">
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="27.961068">
+<testsuite name="tests.spec.ts" timestamp="2024-04-30T09:05:49.229Z" hostname="chromium" tests="2" failures="0" skipped="0" time="25.131" errors="0">
+<testcase name="test suit for testinng › verify total premium data" classname="tests.spec.ts" time="13.081">
 </testcase>
-<testcase name="test suit for testinng › verify number of sales data" classname="tests.spec.ts" time="13.004">
+<testcase name="test suit for testinng › verify number of sales data" classname="tests.spec.ts" time="12.05">
 </testcase>
 </testsuite>
 </testsuites>
