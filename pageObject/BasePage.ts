@@ -9,7 +9,7 @@ class BasePage {
         this.loading = this.page.locator("//div[@aria-label='animation']");
     }
 
-    async waitForTimeOut(timeout = 1500) {
+    async waitForTimeOut(timeout = 2000) {
         await this.page.waitForTimeout(timeout)
     }
 
@@ -20,6 +20,10 @@ class BasePage {
     async waitLoadingToBeHidden() {
         await (this.loading).waitFor({ state: "hidden" })
 
+    }
+
+    async waitForResponse(url: string) {
+       return await this.page.waitForResponse(response => response.url().includes(url) && response.status() === 200);
     }
 
 

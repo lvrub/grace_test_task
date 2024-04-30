@@ -36,7 +36,7 @@ export default defineConfig({
     baseURL: process.env.URL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on',
+    trace: 'retain-on-failure',
     // baseURL: 'https://dev.omni-dispatch.com'
     headless: false
   },

@@ -1,24 +1,19 @@
 
-import { test, expect } from 'playwright/test';
-import LoginPage from './pageObject/LoginPage';
-import SalesPage from './pageObject/SalesPage';
-
-let salesPage : SalesPage;
+import { expect } from 'playwright/test';
+import { test } from '@fix';
 
 test.describe('test suit for testinng', () => {
 
-test.beforeEach( async ({page})=> {
-  let loginPage = new LoginPage(page);
-  salesPage = new SalesPage(page);
+test.beforeEach( async ({loginPage})=> {
 
-  await page.goto('/');
+  await loginPage.openLoginPage();
   await loginPage.fillEmail();
   await loginPage.fillPassword();
   await loginPage.clickButoonLogIn()
 
 })
 
-test('verify total premium data', async ({ page }) => {
+test('verify total premium data', async ({ salesPage }) => {
   
   await salesPage.selectTab('Total Premium');
   await salesPage.clickSelectBrand();
@@ -36,7 +31,7 @@ test('verify total premium data', async ({ page }) => {
 
 });
 
-test('verify number of sales data', async ({ page }) => {
+test('verify number of sales data', async ({ salesPage }) => {
 
   await salesPage.selectTab('Number of Sales');
   await salesPage.clickSelectBrand();
@@ -45,8 +40,7 @@ test('verify number of sales data', async ({ page }) => {
   await salesPage.selectItemFromList('2023');
   await salesPage.clickSelectYear()
   await salesPage.selectItemFromList('2024');
-  let response = await page.waitForResponse(response => 
-    response.url().includes('monthly-sales-counts') && response.status() === 200);
+  let response = await salesPage .waitForResponse('monthly-sales-counts');
   await salesPage.waitForTimeOut()
   await salesPage.compareScreenshotSalesChart('withData.png');
   await salesPage.pageReload()
@@ -55,7 +49,7 @@ test('verify number of sales data', async ({ page }) => {
   await salesPage.verifySelectedYearFilter('2024');
   await salesPage.verifyTabSelected('Number of Sales');
 
-  //additionally verified data for evry month from responce 
+  //additionally verified data for every month from responce 
   const responseData = await response.json();
   const monthlySalesCounts = responseData.monthlySalesCounts;
   const expectedSalesData = [35, 44, 84, 38, 0, 0, 0, 0, 0, 0, 0, 0];

@@ -21,6 +21,10 @@ class LoginPage extends BasePage{
         return this.page.locator("button[type='submit']");
       }
 
+      async openLoginPage(){
+        await this.page.goto('/');
+      }
+
     async fillEmail() {
         await this.getInputEmail().fill(process.env.EMAIL)
     }

@@ -1,18 +1,8 @@
-<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="24.551808">
-<testsuite name="tests.spec.ts" timestamp="2024-04-29T23:43:12.889Z" hostname="chromium" tests="2" failures="0" skipped="0" time="21.313" errors="0">
-<testcase name="test suit for testinng › verify total premium data" classname="tests.spec.ts" time="11.078">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|test-results\tests-test-suit-for-testinng-verify-total-premium-data-chromium\trace.zip]]
-]]>
-</system-out>
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="30.284972000000003">
+<testsuite name="tests.spec.ts" timestamp="2024-04-30T00:40:18.682Z" hostname="chromium" tests="2" failures="0" skipped="0" time="26.956" errors="0">
+<testcase name="test suit for testinng › verify total premium data" classname="tests.spec.ts" time="13.952">
 </testcase>
-<testcase name="test suit for testinng › verify number of sales data" classname="tests.spec.ts" time="10.235">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|test-results\tests-test-suit-for-testinng-verify-number-of-sales-data-chromium\trace.zip]]
-]]>
-</system-out>
+<testcase name="test suit for testinng › verify number of sales data" classname="tests.spec.ts" time="13.004">
 </testcase>
 </testsuite>
 </testsuites>
