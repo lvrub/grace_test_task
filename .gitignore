@@ -4,3 +4,4 @@ playwright-report/
 
 # Dependency directories
 node_modules/
+test-result.xml

@@ -50,12 +50,12 @@ class SalesPage extends BasePage {
     }
 
     async compareScreenshotPremiumChart( shapshotName: string){
-        expect(await this.getChartPremium().screenshot()).toMatchSnapshot(shapshotName);
+        await expect( this.getChartPremium()).toHaveScreenshot(shapshotName);
 
     }
 
     async compareScreenshotSalesChart( shapshotName: string){
-        expect(await this.getChartSales().screenshot()).toMatchSnapshot(shapshotName);
+        await expect( this.getChartSales()).toHaveScreenshot(shapshotName);
 
     }
 

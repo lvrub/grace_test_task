@@ -1,6 +1,7 @@
 
 import { expect } from 'playwright/test';
 import { test } from '@fix';
+import { Interface } from 'readline';
 
 test.describe('test suit for testinng', () => {
 
@@ -14,12 +15,16 @@ test.beforeEach( async ({loginPage})=> {
 
 })
 
+test.afterEach(async ({page})=> {
+await page.close();
+})
+
 test('verify total premium data', async ({ salesPage }) => {
   
   await salesPage.selectTab('Total Premium');
   await salesPage.clickSelectBrand();
   await salesPage.selectItemFromList('Stone Island');
-  await salesPage.clickSelectYear()
+  await salesPage.clickSelectYear();
   await salesPage.selectItemFromList('2023');
   //here I have an error "Error fetching premium data"
   await salesPage.waitForTimeOut()
@@ -33,6 +38,10 @@ test('verify total premium data', async ({ salesPage }) => {
 });
 
 test('verify number of sales data', async ({ salesPage }) => {
+  
+  interface SalesData { 
+    monthlySalesCounts: { [month: string]: number };
+}
 
   await salesPage.selectTab('Number of Sales');
   await salesPage.clickSelectBrand();
@@ -41,8 +50,14 @@ test('verify number of sales data', async ({ salesPage }) => {
   await salesPage.selectItemFromList('2023');
   await salesPage.clickSelectYear()
   await salesPage.selectItemFromList('2024');
-  let response = await salesPage .waitForResponse('monthly-sales-counts');
-  await salesPage.waitForTimeOut()
+  let response:any;
+  let responseData:SalesData;
+  try {
+    response = await salesPage.waitForResponse('monthly-sales-counts');
+    responseData = await response.json();
+} catch (error) {
+    console.error('Error parsing response JSON:', error);
+} await salesPage.waitForTimeOut()
   await salesPage.compareScreenshotSalesChart('withData.png');
   await salesPage.pageReload()
   await salesPage.waitLoadingToBeHidden()
@@ -51,7 +66,7 @@ test('verify number of sales data', async ({ salesPage }) => {
   await salesPage.verifyTabSelected('Number of Sales');
 
   //additionally verified data for every month from responce 
-  const responseData = await response.json();
+  // const responseData = await response.json();
   const monthlySalesCounts = responseData.monthlySalesCounts;
   const expectedSalesData = [35, 44, 84, 38, 0, 0, 0, 0, 0, 0, 0, 0];
   const actualSalesData = Object.values(monthlySalesCounts);
