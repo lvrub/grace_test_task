@@ -11,6 +11,8 @@ require('dotenv').config();
  */
 export default defineConfig({
   testDir: './tests',
+  outputDir: './test-results',
+
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -28,7 +30,12 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   timeout: 800 * 100,
   expect:{
-    timeout : 15000
+    timeout : 15000,
+    toHaveScreenshot: {
+      // An acceptable amount of pixels that could be different, unset by default.
+      // maxDiffPixelRatio: 0.1,
+      scale :"css"
+    }
   },
   // globalSetup  : require.resolve("/./path to global-setup")
   use: {
@@ -37,14 +44,17 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
-    headless: false
+    headless: false,
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+      ...devices['Desktop Chrome'],
+      viewport: { width: 1600, height: 1200 },
+       },
     },
   ],
 });
