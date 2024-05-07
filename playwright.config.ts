@@ -33,9 +33,9 @@ export default defineConfig({
     timeout : 15000,
     toHaveScreenshot: {
       // An acceptable amount of pixels that could be different, unset by default.
-      // maxDiffPixelRatio: 0.1,
-      scale :"css"
-    }
+      // maxDiffPixelRatio: 1,
+      scale :"device"
+    },
   },
   // globalSetup  : require.resolve("/./path to global-setup")
   use: {
