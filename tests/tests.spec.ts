@@ -2,14 +2,17 @@
 import { expect } from 'playwright/test';
 import { test } from '@fix';
 import { Interface } from 'readline';
+import { getAuthData } from 'utilities/jsonReader';
 
 test.describe('test suit for testinng', () => {
 
+ const authData = getAuthData(); 
+ test.use({fix : {email:""}});
 test.beforeEach( async ({loginPage})=> {
 
   await loginPage.openLoginPage();
-  await loginPage.fillEmail(process.env.EMAIL);
-  await loginPage.fillPassword(process.env.PASSWORD);
+  await loginPage.fillEmail(authData.email);
+  await loginPage.fillPassword(authData.password);
   await loginPage.clickButoonLogIn()
 
 
